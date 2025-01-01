@@ -26,7 +26,7 @@ jobs:
         run: bun run build
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+        uses: JamesIves/github-pages-deploy-action@4
         with:
           branch: gh-pages  # the branch to deploy to
           folder: build     # the folder to deploy
