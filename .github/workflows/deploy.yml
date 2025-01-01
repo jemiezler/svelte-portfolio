@@ -6,6 +6,7 @@ on:
       - main  # or your default branch
 permissions:
   contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,17 +15,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Bun
+      - name: Install Yarn
         run: |
-          curl -fsSL https://bun.sh/install | bash
-          echo "$HOME/.bun/bin" >> $GITHUB_PATH  # Make Bun available globally
+          curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+          sudo apt update && sudo apt install yarn
         shell: bash
 
       - name: Install dependencies
-        run: bun install
+        run: yarn install
 
       - name: Build the project
-        run: bun run build
+        run: yarn build
 
       - name: Check build output
         run: ls -l build
