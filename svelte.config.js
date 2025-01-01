@@ -7,7 +7,12 @@ const config = {
 
   kit: {
     // Adapter for static site generation (suitable for GitHub Pages)
-    adapter: adapter(),
+    adapter: adapter({
+			// Optionally specify options here, like the `pages` and `assets` directories
+			pages: 'build',
+			assets: 'build',
+			fallback: null,
+		}),
     
     paths: {
       // If deploying to GitHub Pages, use the repository name as the base path
