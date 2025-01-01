@@ -4,14 +4,15 @@ on:
   push:
     branches:
       - main  # or your default branch
-
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install Bun
         run: |
@@ -26,7 +27,7 @@ jobs:
         run: bun run build
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.7.2
+        uses: JamesIves/github-pages-deploy-action@4
         with:
           branch: gh-pages  # the branch to deploy to
           folder: build     # the folder to deploy
