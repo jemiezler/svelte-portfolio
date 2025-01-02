@@ -14,14 +14,21 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter({
 			pages: 'build',
-            assets: 'build',
-            fallback: null,
-            precompress: false
+			assets: 'build',
+			fallback: null,
+			precompress: false
 		}),
-        paths: {
+		paths: {
 			// If deploying to GitHub Pages, use the repository name as the base path
 			base: '/svelte-portfolio',
 		},
+		vite: {
+			server: {
+				cors: {
+					origin: '*'
+				}
+			}
+		}
 	}
 };
 
